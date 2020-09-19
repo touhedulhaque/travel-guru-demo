@@ -1,0 +1,11 @@
+.App {
+  text-align: center;
+}
+
+.user-name{
+  background-color: beige;
+  font-weight: bold;
+  color: salmon;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
