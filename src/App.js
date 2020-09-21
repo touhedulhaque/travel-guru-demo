@@ -33,7 +33,7 @@ function App() {
   });
 
   return (
-    <div >
+    <div style={{ backgroundImage: `url(${header})` }} className="header" >
       <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
         <div >
           <h2>Welcome  <span className="user-name">{loggedInUser.name}</span> </h2>
