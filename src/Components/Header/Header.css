@@ -1,21 +1,7 @@
-.header{
-    /* position: fixed; */
-    background-position: center;
-    background-size: cover;
-    width: 1440px;
-    height: 900px;
-    left: 0px;
-    top: 0px;
-}
-.header .logo{
-    height: 70px;
-    margin-top: 20px;
-    
-    
-}
 
 .nav{
     margin-left: 20px;
+    margin-top: 20px;
 }
 .nav li{
     display: inline;
@@ -26,6 +12,6 @@
   
   .nav a{
     text-decoration: none;
-    color: snow;
+    color: crimson;
     font-weight: bold;
   }
