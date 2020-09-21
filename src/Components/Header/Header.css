@@ -1,13 +1,13 @@
 
 .nav{
     margin-left: 20px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 .nav li{
     display: inline;
     margin-left: 50px;
-    text-align: right;
-    
+    justify-content: center;
+    align-items: center;  
   }
   
   .nav a{

@@ -25,14 +25,18 @@ function App() {
   const [loggedInUser, setLoggedInUser] = useState({
     isSignedIn: false,
     name: '', 
-    email: ''
+    email: '',
+    password: '',
+    error: '',
+    success: false,
+    
   });
 
   return (
     <div >
       <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
         <div >
-          <h2>Welcome to <span className="user-name">{loggedInUser.name}</span> </h2>
+          <h2>Welcome  <span className="user-name">{loggedInUser.name}</span> </h2>
           <h6>Your logged-in email is: {loggedInUser.email}</h6>
         </div>
         <Router >

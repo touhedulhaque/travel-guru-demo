@@ -1,0 +1,12 @@
+.auth-style{
+    background-color: #FFFFF0;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+hr{
+    background-color: fuchsia
+}
