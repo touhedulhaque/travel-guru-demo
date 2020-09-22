@@ -15,7 +15,7 @@ const Header = () => {
         <div className="container">
             <Navbar variant="primary">
                 <Navbar.Brand href="#home"><img src={logo} alt="" width="200px" /></Navbar.Brand>
-                <Nav className="mr-auto" style={{fontWeight: 'bold'}}>
+                <Nav className="mr-auto" style={{ fontWeight: 'bold' }}>
                     <Nav.Link href="/home" >Home</Nav.Link>
                     <Nav.Link href="/news" >News</Nav.Link>
                     <Nav.Link href="/contact" >Contact</Nav.Link>
@@ -42,10 +42,6 @@ const Header = () => {
                 </Form>
             </Navbar>
         </div>
-
-
-
-
 
     );
 };
