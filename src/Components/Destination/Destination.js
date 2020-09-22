@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import { HiArrowRight } from 'react-icons/hi';
 
 
 
@@ -13,21 +14,30 @@ const Destination = (props) => {
         boxShadow: '5px 5px 15px moccasin',
         border: '1px solid lime',
         borderRadius: '10px',
-        padding: '45px',
+        padding: '10px',
         width: '300px',
-        margin: '100px',
+        margin: '85px',
+        height: '440px',
+        backgroundColor: '#f0f8ff',
+        
+        
+        webkitBoxShadow: '0px 12px 18px -6px rgba(0,0,0,0.3)',
+        
     }
     return (
-        <div className="container col-md-4" style={boxStyle}>
-            <h1>Destination</h1>
-            <p>Place of Tour: {place_name}</p>
-            <img src={image} alt="" width="200px" height="100px" />
+        <div className="container" style={boxStyle}>
+            
+            <h2>{place_name}</h2>
+            <img src={image} alt="" width="280px" height="120px" />
             <p>Country: {country_name}</p>
             <h3>Package price: $ {price}</h3>
             <br/>
             <Button variant="contained" color="primary">
                     <Link to={`/destinationDetail/${id}`}>Click for Detail</Link>
-                </Button>
+                </Button><hr/>
+                <Button variant="contained" color="secondary">
+                        <Link to="/book">Book Now</Link> <HiArrowRight />
+                    </Button>
             
 
 

@@ -8,7 +8,6 @@ import {
 import Header from './Components/Header/Header';
 import Home from './Components/Home/Home';
 import News from './Components/News/News';
-import Blog from './Components/Blog/Blog';
 import Contact from './Components/Contact/Contact';
 import Login from './Components/Login/Login';
 import Book from './Components/Book/Book';
@@ -16,6 +15,7 @@ import Error from './Components/Error/Error';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import header from '../src/Components/Images/Image/header.png'
 import DestinationDetail from './Components/DestinationDetail/DestinationDetail';
+
 
 export const UserContext = createContext();
 
@@ -36,8 +36,8 @@ function App() {
     <div style={{ backgroundImage: `url(${header})` }} className="header" >
       <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
         <div >
-          <h2>Welcome  <span className="user-name">{loggedInUser.name}</span> </h2>
-          <h6>Your logged-in email is: {loggedInUser.email}</h6>
+          <h2 style={{color: 'chocolate'}}>Welcome  <span className="user-name">{loggedInUser.name}</span> </h2>
+          <h6 style={{color: 'tomato'}}>Your logged-in email is: {loggedInUser.email}</h6>
         </div>
         <Router >
           <Header />
@@ -47,9 +47,6 @@ function App() {
             </Route>
             <Route path="/news">
               <News />
-            </Route>
-            <Route path="/blog">
-              <Blog />
             </Route>
             <Route path="/destinationDetail/:id">
               <DestinationDetail />

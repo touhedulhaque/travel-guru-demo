@@ -7,6 +7,14 @@
   justify-content: center;
 }
 
+.auth-style form input{
+  margin: 5px;
+  padding: 10px;
+  width: 400px;
+  border-radius: 10px;
+}
+
 hr{
     background-color: fuchsia
 }
+

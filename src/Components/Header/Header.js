@@ -1,68 +1,52 @@
 import React, { useContext } from 'react';
-import './Header.css';
 import logo from '../Images/Icon/Logo.png'
-import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import { HiArrowRight } from "react-icons/hi";
 import { UserContext } from '../../App';
+import { Navbar, Nav, Form } from 'react-bootstrap';
+import { FormControl } from 'react-bootstrap';
 
 
 
 
 const Header = () => {
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const [loggedInUser] = useContext(UserContext);
     return (
-        <div >
-            
-            <nav className="nav">
-                <ul>
-                    <li>
-                        <img className="logo" src={logo} alt="" width="200px"  />
-                    </li>
-                    <li>
-                        <input type="text" placeholder="  Search your Destination"/>
-                    </li>
+        <div className="container">
+            <Navbar variant="primary">
+                <Navbar.Brand href="#home"><img src={logo} alt="" width="200px" /></Navbar.Brand>
+                <Nav className="mr-auto" style={{fontWeight: 'bold'}}>
+                    <Nav.Link href="/home" >Home</Nav.Link>
+                    <Nav.Link href="/news" >News</Nav.Link>
+                    <Nav.Link href="/contact" >Contact</Nav.Link>
+                    <Nav.Link href="/book" >
+                        <Button variant="contained" color="primary">
+                            Book Now <HiArrowRight />
+                        </Button>
+                    </Nav.Link>
+                    <Nav.Link href="/Login" >
+                        {
+                            loggedInUser.isSignedIn ? <Button variant="contained" color="primary">
+                                Log-out <HiArrowRight />
+                            </Button> :
+                                <Button variant="contained" color="secondary">
+                                    Login <HiArrowRight />
+                                </Button>
+                        }
 
-                    <li>
-                        <Link to="/home">Home</Link>
-                    </li>
-                    <li>
-                        <Link to="/news">News</Link>
-                    </li>
-                
-                    <li>
-                        <Link to="/blog">Blog</Link>
-                    </li>
-                    <li>
-                        <Link to="/contact">contact</Link>
-                    </li>
-                    <li>
-                        <Link to="/book">Book Now</Link>
-                    </li>
-                    <li>
-                        <Link to="/login">
-
-
-                            {
-                                loggedInUser.isSignedIn ? <Button variant="contained"     color="primary">
-                                Log-out <HiArrowRight/>
-                                </Button> :
-                                <Button variant="contained"     color="secondary">
-                            Login <HiArrowRight/>
-                            </Button>
-                            }
-
-
-                        </Link>
-                    </li>
-
-                </ul>
-            </nav>
-            
-            
-
-
+                    </Nav.Link>
+                </Nav>
+                <Form inline>
+                    <FormControl type="text" placeholder="Search destination" className="mr-sm-2" />
+                    <Button variant="outline-primary">Search</Button>
+                </Form>
+            </Navbar>
         </div>
+
+
+
+
+
     );
 };
 

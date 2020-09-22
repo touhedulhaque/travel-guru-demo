@@ -21,13 +21,9 @@ const Login = () => {
     }
 
 
-
     const handleGoogleSignIn = () => {
 
-
         const googleProvider = new firebase.auth.GoogleAuthProvider();
-        
-
 
         firebase.auth().signInWithPopup(googleProvider)
             .then(result => {
@@ -40,14 +36,11 @@ const Login = () => {
                 setLoggedInUser(signedInUser);
                 history.replace(from);
 
-
             }).catch(error => {
                 const errorMessage = error.message;
-                debugger;
                 console.log(errorMessage);
             });
     }
-
     const handleSignedOut = () => {
         firebase.auth().signOut()
             .then(response => {
@@ -81,7 +74,6 @@ const Login = () => {
         }
 
     }
-
     const handleSubmit = (e) => {
         // new user //
         if (newUser && loggedInUser.email && loggedInUser.password) {
@@ -115,8 +107,6 @@ const Login = () => {
                     setLoggedInUser(newUserInfo);
                 });
         }
-
-
         e.preventDefault();
     }
 
@@ -134,24 +124,36 @@ const Login = () => {
     }
     const fbProvider = new firebase.auth.FacebookAuthProvider();
 
-    const  handleFbSignIn = () =>{
+    const handleFbSignIn = () => {
         firebase.auth().signInWithPopup(fbProvider)
-        .then(function(result) {
-            // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-            var token = result.credential.accessToken;
-            // The signed-in user info.
-            var user = result.user;
-            console.log('fb user after sign-in', user);
-          }).catch(function(error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            // The email of the user's account used.
-            var email = error.email;
-            // The firebase.auth.AuthCredential type that was used.
-            var credential = error.credential;
-            // ...
-          });
+            .then(result => {
+                const { displayName, email } = result.user;
+                const fbSignedInUser = {
+                    isSignedIn: true,
+                    name: displayName,
+                    email: email
+                }
+                setLoggedInUser(fbSignedInUser);
+                history.replace(from);
+
+            }).catch(error => {
+                const errorMessage = error.message;
+                console.log(errorMessage)
+            });
+    }
+
+    const handleFbSignedOut = () => {
+        firebase.auth().signOut()
+            .then(response => {
+                const fbSignedOutUser = {
+                    isSignedIn: false,
+                    name: '',
+                    email: ''
+                }
+                setLoggedInUser(fbSignedOutUser)
+            }).catch(error => {
+                console.log(error);
+            });
     }
 
     return (
@@ -169,12 +171,14 @@ const Login = () => {
             }
             <hr />
             <h5>Facebook Authentication</h5>
-            <Button onClick={handleFbSignIn} variant="contained" >
-                Sign-in via Facebook  <img src={fbIcon} alt="" width="40px" />
-            </Button>
 
-
-
+            {
+                loggedInUser.isSignedIn ? <Button onClick={handleFbSignedOut} variant="contained" color="secondary" >
+                    Sign-Out from Facebook  <img src={fbIcon} alt="" width="40px" />
+                </Button> : <Button onClick={handleFbSignIn} variant="contained" >
+                        Sign-in via Facebook  <img src={fbIcon} alt="" width="40px" />
+                    </Button>
+            }
 
             <hr />
             <h6>Authentication via email and password</h6>
@@ -182,9 +186,18 @@ const Login = () => {
             <input type="checkbox" onChange={() => setNewUser(!newUser)} name="newUser" id="" />
             <label htmlFor="newUser">New User Sign up</label>
 
-
-
-            <form onSubmit={handleSubmit}>
+            
+            <form style={{
+                border: '5px solid aqua',
+                borderRadius: '10px',
+                boxShadow: '0 8px 16px rgba(0,0,0,.9)',
+                width: '50%',
+                height: '50%',
+                padding: '20px',
+                justifyContent: 'center',
+                textAlign: 'center',
+                fontWeight: 'bold'
+            }} onSubmit={handleSubmit}>
                 {newUser && <input name="name" onBlur={handleBlur} type="text" placeholder="Your Name" />}
                 <br />
                 <input type="text" name="email" onBlur={handleBlur} placeholder="Your Email Address" required /> <br />
